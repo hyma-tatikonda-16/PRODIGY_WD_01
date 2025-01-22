@@ -3,28 +3,152 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Interactive Navigation Menu</title>
+    <title>Interactive Single Page Navigation</title>
     <link rel="stylesheet" href="styles.css">
+    <style>
+        /* General reset */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            scroll-behavior: smooth; /* Smooth scroll for anchor links */
+        }
+
+        /* Navbar styles */
+        nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            background-color: #333;
+            padding: 10px 0;
+            z-index: 1000;
+        }
+
+        nav ul {
+            display: flex;
+            justify-content: center;
+            list-style-type: none;
+        }
+
+        nav ul li {
+            margin: 0 20px;
+        }
+
+        nav ul li a {
+            color: #fff;
+            text-decoration: none;
+            font-size: 18px;
+            padding: 10px 15px;
+            transition: color 0.3s ease, background-color 0.3s ease;
+        }
+
+        /* Hover effect */
+        nav ul li a:hover {
+            color: #333;
+            background-color: #fff;
+        }
+
+        /* Scrolled state */
+        .scrolled {
+            background-color: #222;
+        }
+
+        /* Section styles */
+        section {
+            padding: 80px 20px;
+            margin-top: 70px; /* To prevent content from being hidden behind navbar */
+            height: 100vh;
+        }
+
+        /* Content section styles */
+        #home {
+            background-color: #f8f8f8;
+        }
+
+        #about {
+            background-color: #e0e0e0;
+        }
+
+        #services {
+            background-color: #d0d0d0;
+        }
+
+        #contact {
+            background-color: #c0c0c0;
+        }
+
+        .content h1 {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+        }
+
+        .content p {
+            font-size: 1.2rem;
+        }
+    </style>
 </head>
 <body>
 
+    <!-- Navbar -->
     <nav id="navbar">
         <ul>
-            <li><a href="#">Home</a></li>
-            <li><a href="#">About</a></li>
-            <li><a href="#">Services</a></li>
-            <li><a href="#">Contact</a></li>
+            <li><a href="#home">Home</a></li>
+            <li><a href="#about">About</a></li>
+            <li><a href="#services">Services</a></li>
+            <li><a href="#contact">Contact</a></li>
         </ul>
     </nav>
 
-    <div class="content">
-        <h1>Scroll down to see the effect!</h1>
-        <p>Content goes here...</p>
-        <p>Content goes here...</p>
-        <p>Content goes here...</p>
-        <!-- Add more content to enable scrolling -->
-    </div>
+    <!-- Home Section -->
+    <section id="home">
+        <div class="content">
+            <h1>Welcome to the Home Section</h1>
+            <p>This is the home section of the page. Scroll to see more content!</p>
+        </div>
+    </section>
 
-    <script src="script.js"></script>
+    <!-- About Section -->
+    <section id="about">
+        <div class="content">
+            <h1>About Us</h1>
+            <p>This is the about section where we introduce ourselves.</p>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section id="services">
+        <div class="content">
+            <h1>Our Services</h1>
+            <p>We offer a wide range of services. Check them out here!</p>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact">
+        <div class="content">
+            <h1>Contact Us</h1>
+            <p>Get in touch with us. We would love to hear from you!</p>
+        </div>
+    </section>
+
+    <!-- JavaScript for Scroll Effect -->
+    <script>
+        // Add scroll effect for changing navbar background
+        window.onscroll = function() {
+            const navbar = document.getElementById('navbar');
+            
+            if (document.body.scrollTop > 50 || document.documentElement.scrollTop > 50) {
+                navbar.classList.add('scrolled');
+            } else {
+                navbar.classList.remove('scrolled');
+            }
+        };
+    </script>
+
 </body>
 </html>
